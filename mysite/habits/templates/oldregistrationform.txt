@@ -1,13 +1,5 @@
-{% extends "habits/base.html" %}
 
-{% block content %}
-    <br>
-    <h3 class="text-center">Create an account!</h3>
-
-    <div class="text-center">
-        <form method="post" action="{% url 'create_account' %}">
-            {% csrf_token %}
-
+            <fieldset class="form-group">
             <div class="form-group">
                 <label for="emailAddress"><strong>Email Address:</strong>
                 <input type="text" class="form-control" id="emailAddress" placeholder="Enter email address">
@@ -24,6 +16,4 @@
             </div>
 
             <button type="submit" class="btn btn-primary" value="createAccount">Create Account</button>
-        </form>
-    </div>
-{% endblock content%}
+            </fieldset> 

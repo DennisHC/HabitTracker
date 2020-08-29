@@ -8,23 +8,25 @@
     
     <!-- Navbar on every page -->
     <nav class ="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="https://github.com/DennisHC">Evergreen Habit Tracker</a>
+        <a class="navbar-brand" href="{% url 'homepage' %}">Evergreen Habit Tracker</a>
     
         <div class="collapse navbar-collapse" id="navbarNavDropdown">   
-            <u1 class="navbar-nav">
+            <u1 class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'homepage'%}">Home</a>
+                    <a class="nav-link" href="{% url 'homepage' %}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                <li class="nav-item disabled">
+                    <a class="nav-link" href="{% url 'features' %}">Features</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'about_us' %}">About Us</a>
                 <li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login">Login</a>
-                </li>
             </u1>
+        </div>
+        <div class="navbar-nav">
+            <!-- Navbar Right Side -->
+            <a class="nav-link active" href="login">Login</a>
+            <a class="nav-link active" href="{% url 'create_account' %}">Register</a>
         </div>
     </nav>
 
@@ -33,20 +35,16 @@
 
 
     <!-- Footer on every page -->
+    <nav class="navbar fixed-bottom navbar-light bg-light">
     <footer class="text-muted">
         <div class="container">
-            <p class="float-right">
-                <a href="#">Back to top</a>
-            </p>
             <p>
-                Evergreen Habit Tracker is developed by using Django and Bootstrap.
-            </p>
-            <p>
-                Visit the GitHub Repository at 
-                <a href="https://github.com/DennisHC/HabitTracker">https://github.com/DennisHC/HabitTracker</a>
+                Evergreen Habit Tracker is developed by using Django and Bootstrap. Visit the GitHub Repository at 
+                <a href="https://github.com/DennisHC/HabitTracker">https://github.com/DennisHC/HabitTracker</a>!
             </p>
         </div>
     </footer>
+    </nav>
 
 </head>
 </html>

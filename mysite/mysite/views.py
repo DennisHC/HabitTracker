@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.views import View
 from . import forms
 
@@ -34,10 +34,14 @@ def password_reset(request):
     return render(request, 'habits/password_reset.html')
 
 def create_account(request):
-    return render(request, 'habits/create_account.html')
+    form = UserCreationForm()
+    return render(request, 'habits/create_account.html', {'form': form})
 
 def success(request):
     return render(request, 'habits/success.html')
 
 def about_us(request):
-    return render(request, 'habits/aboutUs.html')
+    return render(request, 'habits/about_us.html')
+
+def features(request):
+    return render(request, 'habits/features.html')

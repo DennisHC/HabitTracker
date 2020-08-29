@@ -4,7 +4,10 @@
     <br><br>
     <div class="text-center card mx-auto" style="width: 20rem;">
         <form method="post" action="{% url 'login' %}"> 
+            <fieldset>
             {% csrf_token %}
+
+            <legend><strong>Login</strong></legend>
 
             <div class="form-group">
                 <label for="username"><strong>Username:</strong>
@@ -21,7 +24,8 @@
                 <label class="form-check-label" for="rememberMe">Remember Me!</label>
             </div>
 
-            <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+            <button type="submit" class="btn btn-primary mb-3" value="Submit">Login</button>
+            </fieldset>
         </form>
     </div>
 
@@ -30,14 +34,6 @@
         <br>
         <a href="{% url 'create_account' %}">Don't have an account? Create an account here!</a>
     </div>
-
-
-    <div class="text-center">
-        {% if Person1 == 'Dennis' %}
-            <h1> Welcome {{ Person1 | upper}}! </h1>
-        {% else %}
-            <h1> You're not Dennis! </h1>
-        {% endif %}
 
     </div>
 {% endblock content %}

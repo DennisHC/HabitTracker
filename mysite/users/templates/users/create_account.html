@@ -1,0 +1,21 @@
+{% extends "habits/base.html" %}
+
+{% block content %}
+    <br>
+    <div class="align-items-center ml-4">
+        <form method="post" action="{% url 'create_account' %}">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Create an account!</legend>
+                {{ form }}
+            </fieldset>
+            <div class="form-group">
+            <button class="btn btn-primary mb-4" type="submit">Sign Up</button>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Login Here!</a>
+            </small>
+        </div>
+    </div>
+{% endblock content%}

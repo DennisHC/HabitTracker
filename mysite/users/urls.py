@@ -18,17 +18,15 @@ from django.contrib.auth import views as auth_views
 from django.urls import include, path
 from . import views
 from habits import views as habits_views
-from users import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.myhomepage, name='homepage'),
     path('habits/', include('habits.urls')),
-    path('success', views.success, name='success'),
-    path('about_us', views.about_us, name='about_us'),
-    path('features', views.features, name='features'),
     path('login', views.login, name='login'),
     path('logout', views.logout, name='logout'),
     path('password_reset', views.password_reset, name='password_reset'),
-    path('create_account', user_views.create_account, name='create_account'),
+    path('success', views.success, name='success'),
+    path('about_us', views.about_us, name='about_us'),
+    path('features', views.features, name='features')
 ]
