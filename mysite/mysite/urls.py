@@ -27,8 +27,9 @@ urlpatterns = [
     path('success', views.success, name='success'),
     path('about_us', views.about_us, name='about_us'),
     path('features', views.features, name='features'),
-    path('login', views.login, name='login'),
-    path('logout', views.logout, name='logout'),
-    path('password_reset', views.password_reset, name='password_reset'),
+
+    path('login', user_views.login, name='login'),
+    path('logout', user_views.logout, name='logout'),
+    path('password_reset', user_views.password_reset, name='password_reset'),
     path('create_account', user_views.create_account, name='create_account'),
 ]
