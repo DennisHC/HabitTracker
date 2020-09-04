@@ -3,12 +3,19 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.views import View
 from django.contrib import messages
+from django.utils.datastructures import MultiValueDictKeyError
 
 def create_account(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
+        print(request.POST['username'])
+        #for key, value in request.POST.items():
+        #    print("Key: %s" % (key) )
+        #    print("Value %s" % (value) )
         if form.is_valid():
             username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}!')
+        return HttpResponseRedirect('/success')
     else:
         form = UserCreationForm()
     return render(request, 'users/create_account.html', {'form': form})
@@ -20,9 +27,19 @@ def login(request):
    #     redirect(myhomepage)
     #else:
         # No backend authenticated the credentials
+    # is_private = request.POST.get('is_private', False);
     if request.method == 'POST':
         # form = forms.UserRegistrationForm(request.POST)
-        #if form.is_valid():
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            print("You did it!")
+        else:
+            print("it didn't work")
+        #if request.POST['username'] == 'dennis':
+        #    print("YOU DID IT!!")
+        for key, value in request.POST.items():
+            print("Key: %s" % (key) )
+            print("Value %s" % (value) )
         return HttpResponseRedirect('/success')
 
 
