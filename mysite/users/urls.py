@@ -20,13 +20,4 @@ from . import views
 from habits import views as habits_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.myhomepage, name='homepage'),
-    path('habits/', include('habits.urls')),
-    path('login', views.login, name='login'),
-    path('logout', views.logout, name='logout'),
-    path('password_reset', views.password_reset, name='password_reset'),
-    path('success', views.success, name='success'),
-    path('about_us', views.about_us, name='about_us'),
-    path('features', views.features, name='features')
 ]

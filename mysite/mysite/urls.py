@@ -28,8 +28,9 @@ urlpatterns = [
     path('about_us', views.about_us, name='about_us'),
     path('features', views.features, name='features'),
 
+    path('create_account', user_views.create_account, name='create_account'),
     path('login', user_views.login, name='login'),
     path('logout', user_views.logout, name='logout'),
+    path('my_habits', user_views.my_habits, name='my_habits'),
     path('password_reset', user_views.password_reset, name='password_reset'),
-    path('create_account', user_views.create_account, name='create_account'),
 ]

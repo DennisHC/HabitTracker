@@ -2,9 +2,15 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.views import View
+from django.contrib import messages
 
 def create_account(request):
-    form = UserCreationForm()
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+    else:
+        form = UserCreationForm()
     return render(request, 'users/create_account.html', {'form': form})
 
 def login(request):
@@ -26,6 +32,10 @@ def login(request):
 
 def logout(request):
     return render(request, 'users/logout.html')
+
+def my_habits(request):
+    return render(request, 'users/my_habits.html')
+
 
 def password_reset(request):
     return render(request, 'users/password_reset.html')
