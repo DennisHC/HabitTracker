@@ -32,6 +32,17 @@
             <a class="nav-link active" href="{% url 'create_account' %}">Register</a>
         </div>
     </nav>
+    
+    <!-- Redirect Messages -->
+    <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
 
     {% block content %}
     {% endblock content %}

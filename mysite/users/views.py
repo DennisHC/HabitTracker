@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.views import View
 from django.contrib import messages
-from django.utils.datastructures import MultiValueDictKeyError
+from django.contrib.auth.models import User
 
 def create_account(request):
     if request.method == 'POST':
@@ -13,9 +13,13 @@ def create_account(request):
         #    print("Key: %s" % (key) )
         #    print("Value %s" % (value) )
         if form.is_valid():
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}!')
-        return HttpResponseRedirect('/success')
+            print("Account successfully created!")
+            form_username = form.cleaned_data.get('username')
+            form_password = form.cleaned_data.get('password1')
+            new_user = User(username = form_username, password = form_password)
+            new_user.save()
+            messages.success(request, f'Account created for {form_username}!')
+        return redirect('homepage')
     else:
         form = UserCreationForm()
     return render(request, 'users/create_account.html', {'form': form})
