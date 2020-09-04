@@ -1,0 +1,17 @@
+#showcase{
+    background-image: url('../images/mountainlake2.jpg');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    min-height: 100%;
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+#showcase h2{
+    color: #fff;
+    font-size: 7vw;
+    line-height: 1.6em;
+    padding-top: 10px;
+    padding-bottom: 5vw;
+}

@@ -3,9 +3,53 @@
 {% block content %}
 
 
+
+
 {% load static %}
-<img src="{% static "images/mountainlake.jpg" %}" class="img-fluid" alt="Image not found">
-<p class="text-over-img" style="color:white; absolute; top: 50px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur assumenda aspernatur recusandae, ipsum consequatur expedita qui excepturi odit aliquid error sint culpa minus magnam sequi debitis illum, laborum aliquam non?</p>
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<div id="showcase" class="py-5">
+    <h2>
+        Welcome to the Evergreen Habit Tracker!
+    </h2>
+</div>
+
+<div class="container">
+    <h1 class="font-weight-bold text-center mt-5">What we offer</h1>
+
+    <div class="row">
+        <div class="col">
+            <div class="card mt-5" style="width: 18rem;">
+                <img class="card-img-top" src="{% static 'images/habit2.png' %}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title font-weight-bold">Habit Tracking</h5>
+                  <p class="card-text">Track your habits and reach your life goals.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card mt-5" style="width: 18rem;">
+                <img class="card-img-top" src="{% static 'images/task2.jpg' %}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title font-weight-bold">Task Tracking</h5>
+                  <p class="card-text">Don't forget what you planned for today.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card mt-5" style="width: 18rem;">
+                <img class="card-img-top" src="{% static 'images/test.webp' %}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title font-weight-bold">Sponsored by Rick Sanchez</h5>
+                  <p class="card-text">What else needs to be said? </p>
+                </div>
+            </div>
+        </div>
+      </div>
+
+</div>
 
 
 {% endblock content %}
