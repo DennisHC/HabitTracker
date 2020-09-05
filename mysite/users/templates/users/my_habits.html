@@ -3,47 +3,39 @@
 {% block content %}
     <div class="container my-10">
         <div class="row mx-md-n5 my-5">
-
+            <!--Tasks list-->
             <div class="col px-md-5">
                 <div class="p-3 border bg-light">
                     <h2 class="text-center">Tasks</h2>
-
-                    <!--Use javascript to grab this id and populate the items on the page-->
                     <div id="tasklist">
-                        <!--Populate here-->
-
-                        <!--Remove later when loading from db functionality is implemented-->
-                        <div class="my-3">
-                            <div class="input-group-text text-wrap text-left">
-                                <input type="checkbox" class="mx-2">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus excepturi, reprehenderit eius debitis ipsum in aliquam vero quia autem, placeat odio maxime dignissimos exercitationem animi neque quibusdam totam iste odit.
+                        <div class="row input-group-text text-wrap text-left my-3 mx-1">
+                            <div class="col">
+                                <input type="checkbox">
+                                Do this thing
+                                <button class="btn btn-secondary btn-sm mt-2 float-right" type="submit">
+                                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
+            <!--Habits list-->
             <div class="col px-md-5">
                 <div class="p-3 border bg-light">
                     <h2 class="text-center">Habits</h2>
-
-                    <!--Use javascript to grab this id and populate the items on the page-->
-                    <div id="tasklist">
-                        <!--Populate here-->
-
-                        <!--Remove later when loading from db functionality is implemented-->
-                        <div class="my-3">
-                            <div class="input-group-text text-wrap text-left">
-                                <input type="checkbox" class="mx-2">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus excepturi, reprehenderit eius debitis ipsum in aliquam vero quia autem, placeat odio maxime dignissimos exercitationem animi neque quibusdam totam iste odit.
-                            </div>
-                        </div>
-                    </div>
-
+                    <div id="habitlist"></div>
                 </div>
             </div>
 
         </div>
     </div>
+
+{% load static %}
+    <script type="text/javascript" src="{% static 'javascript/habits.js' %}"></script>
+
 {% endblock content %}
