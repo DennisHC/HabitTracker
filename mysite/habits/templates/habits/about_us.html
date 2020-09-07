@@ -1,9 +1,41 @@
 {% extends "habits/base.html" %}
 
 {% block content %}
-    <div class="text-center">
-        <br>
-        <p> Currently a college student at UCI learning to program!</p>
-        <br>
+    {% load static %}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <br>
+    <h1 class="text-center">Our Story</h1>
+    <br> 
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <img class="" src="{% static 'images/uci_street.jpg' %}" alt="UCI Logo">
+            </div>
+            <div class="col-sm text-center">
+                <p>
+                    Evergreen Habit Tracker was developed by two Senior Computer Science students studying at the University of California, Irvine.
+                    <br>
+                    With a passion in bringing together technology and other disciplines such as productivity and pscyhology, the Evergreen Habit Tracker was created.
+                </p>
+            </div>
+        </div>
     </div>
+
+    <h1 class="text-center">Why a Habit Tracker?</h1>
+    <div class="container">
+        <div class="col-sm">
+            <img></img>
+        </div>
+        <div class="col-sm text-center">
+            <p>
+                This habit tracker was chosen as a project to combine software development with productivity, psychology, and holistic well-being.
+                <br>
+                By combining these disciplines together, the by product of this app is to reinforce positive habits and attaining goals. 
+                <br>
+            </p>
+        </div>
+    </div>
+
 {% endblock content %}

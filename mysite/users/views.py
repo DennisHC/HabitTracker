@@ -5,6 +5,7 @@ from django.views import View
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
 def create_account(request):
     if request.method == 'POST':
@@ -36,21 +37,21 @@ def login(request):
         # No backend authenticated the credentials
     # is_private = request.POST.get('is_private', False);
     if request.method == 'POST':
-        # for key, value in request.POST.items():
-        #     print("Key: %s" % (key) )
-        #     print("Value %s" % (value) )
+        for key, value in request.POST.items():
+            print("Key: %s" % (key) )
+            print("Value %s" % (value) )
         username = request.POST.get('username')
         username = username.cleaned_data
         password = request.POST.get('password')
         password = password.cleaned_data
-        user = authenticate(request, username = username, password = password)
+        user = authenticate(username = username, password = password)
         if user is not None:
             print("You did it!")
             login(request, user)
             return redirect('/success')
         else:
             print("It didn't work")
-            return redirect('homepage')
+            return redirect('login')
     else:
         dictionary_object = {'Person1': 'Dennis', 'Person2': 'Ian'}
         return render(request, 'users/login.html', dictionary_object)
@@ -62,6 +63,9 @@ def logout(request):
 def my_habits(request):
     return render(request, 'users/my_habits.html')
 
+def profile(request):
+    return render(request, 'users/profile.html')
 
+@login_required
 def password_reset(request):
     return render(request, 'users/password_reset.html')

@@ -29,8 +29,10 @@ urlpatterns = [
     path('features', views.features, name='features'),
 
     path('create_account', user_views.create_account, name='create_account'),
-    path('login', user_views.login, name='login'),
-    path('logout', user_views.logout, name='logout'),
+    path('login/', auth_views.LoginView.as_view(template_name='users/login.html', redirect_authenticated_user=True), name='login'),
+    path('logout', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('my_habits', user_views.my_habits, name='my_habits'),
     path('password_reset', user_views.password_reset, name='password_reset'),
+
+    path('profile', user_views.profile, name='profile')
 ]
