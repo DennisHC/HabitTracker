@@ -22,19 +22,5 @@ from users import views as user_views
 from user_profiles import views as user_profiles_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.myhomepage, name='homepage'),
-    path('habits/', include('habits.urls')),
-    path('success', views.success, name='success'),
-    path('about_us', views.about_us, name='about_us'),
-    path('features', views.features, name='features'),
-
-    path('create_account', user_views.create_account, name='create_account'),
-    path('login/', auth_views.LoginView.as_view(template_name='users/login.html', redirect_authenticated_user=True), name='login'),
-    path('logout', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
-    path('my_habits', user_views.my_habits, name='my_habits'),
-    path('password_reset', user_views.password_reset, name='password_reset'),
-
-    path('profile/', user_views.profile, name='profile'),
-    path('profile/', include('user_profiles.urls')),
+    path('<int:id>', views.index, name='profile_home'),
 ]
