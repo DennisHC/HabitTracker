@@ -15,3 +15,17 @@
     padding-top: 10px;
     padding-bottom: 5vw;
 }
+
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: table;
+}
+
+footer { 
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+}

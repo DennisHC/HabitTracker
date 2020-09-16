@@ -21,6 +21,15 @@
                 </div>
             </div>
 
+            <div>
+                    <ul>
+                        <h1> {{ current_user_tasklist }} </h1>
+                        {% for task in current_user_tasklist %}
+                            <li> {{ task }} </li>
+                        {% endfor %}
+                    </ul>
+            </div>
+
         </div>
     </div>
 
