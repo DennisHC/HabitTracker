@@ -1,23 +1,7 @@
-let tasklist = [
-    'Do Homework',
-    'Do Chores',
-    'Do Something 1',
-    'Do Something 2',
-    'Do Something 3',
-    'Do Something 4',
-    'Do Something 5'
-]
-
-let habitlist = [
-    'Habit 1',
-    'Habit 2',
-    'Habit 3'
-]
-
 let tasksListDisplay = document.querySelector('#tasklist');
 let habitListDisplay = document.querySelector('#habitlist');
 
-tasklist.forEach(taskText => {
+taskList.forEach(taskText => {
     let taskHTML = document.createElement('div');
     let colDiv = document.createElement('div');
     let checkmark = document.createElement('input');
@@ -51,7 +35,7 @@ tasklist.forEach(taskText => {
     tasksListDisplay.appendChild(taskHTML);
 })
 
-habitlist.forEach(habitText => {
+habitList.forEach(habitText => {
     let habitHTML = document.createElement('div');
     let colDiv = document.createElement('div');
     let checkmark = document.createElement('input');
