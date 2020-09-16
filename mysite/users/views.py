@@ -54,32 +54,42 @@ def login(request):
             print("It didn't work")
             return redirect('login')
     else:
-        dictionary_object = {'Person1': 'Dennis', 'Person2': 'Ian'}
-        return render(request, 'users/login.html', dictionary_object)
+        return render(request, 'users/login.html')
 
 
 def logout(request):
     return render(request, 'users/logout.html')
 
 def my_habits(request):
-    #if request.method == 'POST':
+    if request.method == 'POST': # Create, Update, Delete
+        # CREATE
+        
 
-    #else:
+        # UPDATE
 
-    # Get the current user object
-    user = User.objects.get(username='admin')
 
-    # Get the current user's TaskList
-    my_task_list_name = TaskList.objects.get(list_name='Admin Task List')
+        # DELETE
+            #task_item.delete()
 
-    # Get the TaskList's items
-    my_task_list = my_task_list_name.task_items.all()
+        return redirect(request)
+    else: # Read
+        # 1) Get the current user object
+        print(request.user)
+        user = User.objects.get(username='admin')
+        # print(User.objects.all())
 
-    # Pass all the task items into the context
-    context = {} 
-    context['current_user_tasklist'] = my_task_list
+        # 2) Get the current user's TaskList through the Foreign Key (Retrieves first item in QuerySet)
+        my_task_list_name = TaskList.objects.select_related().filter(user=user).first()
 
-    return render(request, 'users/my_habits.html', context)
+        # 3) Get the TaskList's items
+        my_task_list = my_task_list_name.task_items.all()
+        # print(my_task_list)
+
+        # 4) Pass all the task items into the context
+        context = {} 
+        context['current_user_tasklist'] = my_task_list
+
+        return render(request, 'users/my_habits.html', context)
 
 def profile(request):
     return render(request, 'users/profile.html')
