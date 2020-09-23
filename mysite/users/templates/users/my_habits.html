@@ -6,25 +6,52 @@
         <div class="row mx-md-n5 my-5">
             <!--Tasks list-->
             <div class="col px-md-5">
-                <div class="p-3 border bg-light">
+                <div id="tasksContainer" class="p-3 border bg-light">
                     <h2 class="text-center">Tasks</h2>
-                    <div id="tasklist">
+                    <div id="tasklist"></div>
+
+                    <div class="row">
+                        <button id="addTaskButton" class="btn btn-secondary mx-auto" type="submit">
+                            <img src="/static/images/add.svg" alt="">
+                        </button>
                     </div>
+
                 </div>
             </div>
 
             <!--Habits list-->
             <div class="col px-md-5">
-                <div class="p-3 border bg-light">
+                <div id="habitsContainer" class="p-3 border bg-light">
                     <h2 class="text-center">Habits</h2>
                     <div id="habitlist"></div>
+
+                    <div class="row">
+                        <button id="addHabitButton" class="btn btn-secondary mx-auto" type="submit">
+                            <img src="/static/images/add.svg" alt="">
+                        </button>
+                    </div>
+
                 </div>
             </div>
 
         </div>
     </div>
 
-{% load static %}
-    <script type="text/javascript" src="{% static 'javascript/habits.js' %}"></script>
 
+
+
+{% load static %}
+<script type="text/javascript">
+    var userID = "{{ id }}";
+    //var taskList = [];
+    //var habitList = [];
+</script>
+{% for task in current_user_tasklist %}
+<script type="text/javascript">
+    //taskList.push("{{ task }}");
+</script>
+{% endfor %}
+<script type="text/javascript" src="{% static 'javascript/populateTasksHabits.js' %}"></script>
+<script type="text/javascript" src="{% static 'javascript/addTask.js' %}"></script>
+<script type="text/javascript" src="{% static 'javascript/addHabit.js' %}"></script>
 {% endblock content %}

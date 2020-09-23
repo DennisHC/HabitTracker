@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from habits.models import TaskList, TaskItem, HabitItem, HabitList
 
 def create_account(request):
     if request.method == 'POST':
@@ -37,9 +38,9 @@ def login(request):
         # No backend authenticated the credentials
     # is_private = request.POST.get('is_private', False);
     if request.method == 'POST':
-        for key, value in request.POST.items():
-            print("Key: %s" % (key) )
-            print("Value %s" % (value) )
+        # for key, value in request.POST.items():
+        #     print("Key: %s" % (key) )
+        #     print("Value %s" % (value) )
         username = request.POST.get('username')
         username = username.cleaned_data
         password = request.POST.get('password')
@@ -53,15 +54,42 @@ def login(request):
             print("It didn't work")
             return redirect('login')
     else:
-        dictionary_object = {'Person1': 'Dennis', 'Person2': 'Ian'}
-        return render(request, 'users/login.html', dictionary_object)
+        return render(request, 'users/login.html')
 
 
 def logout(request):
     return render(request, 'users/logout.html')
 
 def my_habits(request):
-    return render(request, 'users/my_habits.html')
+    if request.method == 'POST': # Create, Update, Delete
+        # CREATE
+        
+
+        # UPDATE
+
+
+        # DELETE
+            #task_item.delete()
+
+        return redirect(request)
+    else: # Read
+        # 1) Get the current user object
+        print(request.user)
+        user = User.objects.get(username='admin')
+        # print(User.objects.all())
+
+        # 2) Get the current user's TaskList through the Foreign Key (Retrieves first item in QuerySet)
+        my_task_list_name = TaskList.objects.select_related().filter(user=user).first()
+
+        # 3) Get the TaskList's items
+        my_task_list = my_task_list_name.task_items.all()
+        # print(my_task_list)
+
+        # 4) Pass all the task items into the context
+        context = {} 
+        context['current_user_tasklist'] = my_task_list
+
+        return render(request, 'users/my_habits.html', context)
 
 def profile(request):
     return render(request, 'users/profile.html')

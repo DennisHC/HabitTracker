@@ -32,15 +32,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'habits.apps.HabitsConfig',
-    'users.apps.UsersConfig',
-    'user_profiles.apps.UserProfilesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'habits.apps.HabitsConfig',
+    'users.apps.UsersConfig',
+    'user_profiles.apps.UserProfilesConfig',
+
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -120,6 +123,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 STATIC_URL = '/static/'
 
