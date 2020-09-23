@@ -6,14 +6,15 @@
         <div class="row mx-md-n5 my-5">
             <!--Tasks list-->
             <div class="col px-md-5">
-                <div class="p-3 border bg-light">
+                <div id="tasksContainer" class="p-3 border bg-light">
                     <h2 class="text-center">Tasks</h2>
                     <div id="tasklist"></div>
 
-                    
-                    <button class="btn btn-secondary" type="submit">
-                        <img src="/static/images/add.svg" alt="">
-                    </button>
+                    <div class="row">
+                        <button id="addTaskButton" class="btn btn-secondary mx-auto" type="submit">
+                            <img src="/static/images/add.svg" alt="">
+                        </button>
+                    </div>
 
                 </div>
             </div>
@@ -24,15 +25,6 @@
                     <h2 class="text-center">Habits</h2>
                     <div id="habitlist"></div>
                 </div>
-            </div>
-
-            <div>
-                    <ul>
-                        <h1> {{ current_user_tasklist }} </h1>
-                        {% for task in current_user_tasklist %}
-                            <li> {{ task }} </li>
-                        {% endfor %}
-                    </ul>
             </div>
 
         </div>
@@ -52,5 +44,5 @@
 </script>
 {% endfor %}
 <script type="text/javascript" src="{% static 'javascript/habits.js' %}"></script>
-
+<script type="text/javascript" src="{% static 'javascript/addTask.js' %}"></script>
 {% endblock content %}
