@@ -21,9 +21,16 @@
 
             <!--Habits list-->
             <div class="col px-md-5">
-                <div class="p-3 border bg-light">
+                <div id="habitsContainer" class="p-3 border bg-light">
                     <h2 class="text-center">Habits</h2>
                     <div id="habitlist"></div>
+
+                    <div class="row">
+                        <button id="addHabitButton" class="btn btn-secondary mx-auto" type="submit">
+                            <img src="/static/images/add.svg" alt="">
+                        </button>
+                    </div>
+
                 </div>
             </div>
 
@@ -35,14 +42,16 @@
 
 {% load static %}
 <script type="text/javascript">
-    var taskList = [];
-    var habitList = [];
+    var userID = "{{ id }}";
+    //var taskList = [];
+    //var habitList = [];
 </script>
 {% for task in current_user_tasklist %}
 <script type="text/javascript">
-    taskList.push("{{ task }}");
+    //taskList.push("{{ task }}");
 </script>
 {% endfor %}
-<script type="text/javascript" src="{% static 'javascript/habits.js' %}"></script>
+<script type="text/javascript" src="{% static 'javascript/populateTasksHabits.js' %}"></script>
 <script type="text/javascript" src="{% static 'javascript/addTask.js' %}"></script>
+<script type="text/javascript" src="{% static 'javascript/addHabit.js' %}"></script>
 {% endblock content %}
