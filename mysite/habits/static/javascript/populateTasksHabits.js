@@ -1,24 +1,19 @@
 let tasksListDisplay = document.querySelector('#tasklist');
 let habitListDisplay = document.querySelector('#habitlist');
 
+//Get Tasks from Server and populate them
 fetch('http://127.0.0.1:8000/api/getTasks:' + userID)
-.then(res => {
-    res.json();
-})
-.then(data => {
-    populateTasks(data.tasks);
-})
+.then(res => res.json())
+.then(data => populateTasks(data.tasks))
 .catch(err => console.log(err));
 
+//Get Habits from Server and populate them
 fetch('http://127.0.0.1:8000/api/getHabits:' + userID)
-.then(res => {
-    res.json();
-})
-.then(data => {
-    populateTasks(data.habits);
-})
+.then(res => res.json())
+.then(data => populateHabits(data.habits))
 .catch(err => console.log(err));
 
+//Aux Functions that get called above
 function populateTasks(taskList){
     taskList.forEach(taskText => {
         let taskHTML = document.createElement('div');
@@ -55,7 +50,7 @@ function populateTasks(taskList){
     })
 }
 
-function populateHabits(){
+function populateHabits(habitList){
     habitList.forEach(habitText => {
         let habitHTML = document.createElement('div');
         let colDiv = document.createElement('div');

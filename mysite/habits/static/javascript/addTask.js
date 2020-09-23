@@ -28,7 +28,10 @@ addTaskButton.addEventListener('click', (e) =>{
         //POST to backend
         fetch('http://127.0.0.1:8000/api/addTask', {
             method: 'POST',
-            body: JSON.stringify({task: 'input.value'})
+            body: JSON.stringify({
+                id: userID,
+                task: input.value
+            })
         })
         .then(res => {
             if(res.status === 200)

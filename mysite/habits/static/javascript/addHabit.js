@@ -28,7 +28,10 @@ addHabitButton.addEventListener('click', (e) =>{
         //POST to backend
         fetch('http://127.0.0.1:8000/api/addHabit', {
             method: 'POST',
-            body: JSON.stringify({habit: 'input.value'})
+            body: JSON.stringify({
+                id: userID,
+                habit: input.value
+            })
         })
         .then(res => {
             if(res.status === 200)
