@@ -66,3 +66,11 @@ def user_tasks(request, pk):
     serializer = TaskListSerializer(tasks, many=True)
     return Response(serializer.data)
  
+@api_view(['POST'])
+def user_task_create(request):
+    serializer = TaskSerializer(data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+
+    return Response(serializer.data)
