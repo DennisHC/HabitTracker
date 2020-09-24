@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.views import View
 from django.contrib import messages
@@ -7,6 +7,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from habits.models import TaskList, TaskItem, HabitItem, HabitList
+
+# REST API
+import json
+from django.core import serializers
+
 
 def create_account(request):
     if request.method == 'POST':
@@ -86,10 +91,9 @@ def my_habits(request):
         # print(my_task_list)
 
         # 4) Pass all the task items into the context
-        context = {} 
-        context['current_user_tasklist'] = my_task_list
+        #context['current_user_tasklist'] = my_task_list
 
-        return render(request, 'users/my_habits.html', context)
+        return render(request, 'users/my_habits.html')
 
 def profile(request):
     return render(request, 'users/profile.html')
