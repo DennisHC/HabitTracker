@@ -26,7 +26,7 @@ addHabitButton.addEventListener('click', (e) =>{
         e.preventDefault();
 
         //POST to backend
-        fetch('http://127.0.0.1:8000/api/addHabit', {
+        fetch('/api/addHabit', {
             method: 'POST',
             body: JSON.stringify({
                 id: userID,

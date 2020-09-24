@@ -2,13 +2,13 @@ let tasksListDisplay = document.querySelector('#tasklist');
 let habitListDisplay = document.querySelector('#habitlist');
 
 //Get Tasks from Server and populate them
-fetch('http://127.0.0.1:8000/api/getTasks:' + userID)
+fetch('/api/getTasks:' + userID)
 .then(res => res.json())
 .then(data => populateTasks(data.tasks))
 .catch(err => console.log(err));
 
 //Get Habits from Server and populate them
-fetch('http://127.0.0.1:8000/api/getHabits:' + userID)
+fetch('/api/getHabits:' + userID)
 .then(res => res.json())
 .then(data => populateHabits(data.habits))
 .catch(err => console.log(err));
