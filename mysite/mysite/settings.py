@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'habits.apps.HabitsConfig',
     'users.apps.UsersConfig',
     'user_profiles.apps.UserProfilesConfig',
+    'api.apps.ApiConfig',
 
+    'rest_framework',
     'crispy_forms',
 ]
 

@@ -2,20 +2,39 @@ let tasksListDisplay = document.querySelector('#tasklist');
 let habitListDisplay = document.querySelector('#habitlist');
 
 //Get Tasks from Server and populate them
-fetch('/api/getTasks:' + userID)
+fetch('/api/getTasks/1')
 .then(res => res.json())
-.then(data => populateTasks(data.tasks))
+.then(data => {
+    populateTasks(data);
+    console.log(data);
+})
+.catch(err => console.log(err));
+
+//Testing Updating task
+fetch('/api/updateTask/10/', {
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    method: "POST",
+    body: JSON.stringify({
+        task_name: "Test Task",
+    })
+})
+.then(res => {}/*window.location.replace(window.location.href)*/)
+.then(data => {})
 .catch(err => console.log(err));
 
 //Get Habits from Server and populate them
-fetch('/api/getHabits:' + userID)
+/*fetch('/api/getHabits/1')
 .then(res => res.json())
 .then(data => populateHabits(data.habits))
-.catch(err => console.log(err));
+.catch(err => console.log(err));*/
 
 //Aux Functions that get called above
 function populateTasks(taskList){
-    taskList.forEach(taskText => {
+    taskList.forEach(taskObject => {
+        let taskText = taskObject.task_name;
         let taskHTML = document.createElement('div');
         let colDiv = document.createElement('div');
         let checkmark = document.createElement('input');
