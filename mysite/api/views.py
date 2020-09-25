@@ -21,16 +21,14 @@ from .serializers import TaskSerializer, TaskListSerializer
 @api_view(['GET'])
 def api_overview(request):
     api_urls = {
-        'List': '/task-list/',
-        'Detail View': '/task-detail/<str:pk>/',
-        'Create': '/task-create/',
-        'Update': '/task-update/<str:pk>/',
-        'Delete': '/task-delete/<str:pk>/',
-    }
-    test = {
-        "me": "Dennis"
+        'List': 'N/A',
+        'Detail View': '/getTasks/<str:pk>/',
+        'Create': '/addTask/',
+        'Update': '/updateTask/<str:pk>/',
+        'Delete': '/deleteTask/<str:pk>/',
     }
     return Response(api_urls)
+    
 """
 @api_view(['GET'])
 def task_list(request):
@@ -65,12 +63,7 @@ def task_list(request):
 
 # Handle no user or user_task_list exception
 @api_view(['GET'])
-def user_tasks(request, pk):
-    """
-    tasks = TaskList.objects.filter(id=pk)
-    print(tasks)
-    serializer = TaskListSerializer(tasks, many=True) # Try to just get the "task_items" field
-    """ 
+def getTasks(request, pk):
 
     # 1) Get the current user object
     try:
@@ -93,18 +86,31 @@ def user_tasks(request, pk):
 
     return Response(serializer.data)
  
-
-
-
-
-
-
- 
+# Figure out how to attach TaskItem to a user
 @api_view(['POST'])
-def user_task_create(request):
+def addTask(request):
     serializer = TaskSerializer(data=request.data)
 
     if serializer.is_valid():
         serializer.save()
 
     return Response(serializer.data)
+
+# Working
+@api_view(['POST'])
+def updateTask(request, pk):
+    task = TaskItem.objects.get(id=pk)
+    serializer = TaskSerializer(instance=task, data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+
+    return Response(serializer.data)
+
+# Test this out
+@api_view(['DELETE'])
+def deleteTask(request, pk):
+    task = TaskItem.objects.get(id=pk)
+    task.delete()
+
+    return Response('Item successfully deleted!')

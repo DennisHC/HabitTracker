@@ -5,18 +5,33 @@ from . import views
 
 urlpatterns = [
     path('', views.api_overview, name='api_overview'),
+    # path('task_list/', views.task_list, name='rest_tasks_list'),
 
-    # 'GET' on url '/api/getTasks/' + userID
-    path('task_list/', views.task_list, name='rest_tasks_list'),
-    path('user_tasks/<str:pk>/', views.user_tasks, name='rest_user_tasks'),
-    path('user_task_create/', views.user_task_create, name='rest_user_task_create'),
+    # [READ] 'GET' on url '/api/getTasks/' + userID
+    path('getTasks/<str:pk>/', views.getTasks, name='restGetTasks'),
 
-    # <int:id>'
-    # 'GET' on url '/api/getHabits/' + userID
-    # path('getHabits', api_views.get_habits, name='rest_habits),
+    # [CREATE] 'POST' on url '/api/addTask' With userID in Body
+    path('addTask', views.addTask, name='restAddTask'),
 
-    # 'POST' on url '/api/addTask' With userID in Body
-    # path('addTask', api_views.add_task, name='rest_add_task'),
-    # 'POST' on url '/api/addHabit' With userID in Body
-    # path('addHabit', api_views.add_habit, name='rest_add_habit'),
+    # [UPDATE] 'POST' on url '/api/updateTask'
+    path('updateTask/<str:pk>/', views.updateTask, name='restUpdateTask'),
+
+    # [DELETE] 'DELETE' on url '/api/deleteTask'
+    path('deleteTask/<str:pk>/', views.deleteTask, name='restDeleteTask'),
+
+
+
+    # [READ] 'GET' on url '/api/getHabits/' + userID
+    # path('getHabits', api_views.getHabits, name='restHabits),
+
+    # [CREATE] 'POST' on url '/api/addHabit' With userID in Body
+    # path('addHabit', api_views.addHabit, name='restAddHabit'),
+
+    # [UPDATE] 'POST' on url '/api/updateHabit'
+    # path('updateHabit/<str:pk>/', views.updateHabit, name='restUpdateHabit'),
+    
+    # [DELETE] 'DELETE' on url '/api/deleteHabit'
+    # path('deleteHabit/<str:pk>/', views.deleteHabit, name='restDeleteHabit'),
+
+
 ]
